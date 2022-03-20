@@ -1,0 +1,6 @@
+.calendar-container {
+  min-height: 65vh;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  width: 100%;
+}
