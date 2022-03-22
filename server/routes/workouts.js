@@ -20,7 +20,7 @@ workoutRoutes.route("/workouts").get(function (req, res) {
 });
 
 // GET workout by ID
-workoutRoutes.route("workouts/:id").get(function (req, res) {
+workoutRoutes.route("/workouts/:id").get(function (req, res) {
   var data = db.getData("workouts");
   var query = { _id: ObjectId(req.params.id) };
   data.collection("workouts").findOne(query, function (error, result) {
@@ -33,7 +33,7 @@ workoutRoutes.route("workouts/:id").get(function (req, res) {
 });
 
 // POST new workout
-workoutRoutes.route("workouts/add").post(function (req, res) {
+workoutRoutes.route("/workouts/add").post(function (req, res) {
   var data = db.getData("workouts");
   var newWorkout = {
     name: req.body.workout.name,
@@ -49,7 +49,7 @@ workoutRoutes.route("workouts/add").post(function (req, res) {
 });
 
 // POST update workout by ID
-workoutRoutes.route("workouts/update/:id").post(function (req, res) {
+workoutRoutes.route("/workouts/update/:id").post(function (req, res) {
   var data = db.getData("workouts");
   var query = { _id: ObjectId(req.params.id) };
   var updatedWorkout = {
@@ -70,7 +70,7 @@ workoutRoutes.route("workouts/update/:id").post(function (req, res) {
 });
 
 // DELETE workout by ID
-workoutRoutes.route("workouts/delete/:id").delete(function (req, res) {
+workoutRoutes.route("/workouts/delete/:id").delete(function (req, res) {
   var data = db.getData("workouts");
   var query = { _id: ObjectId(req.params.id) };
   data.collection("workouts").deleteOne(query, function (error, result) {
