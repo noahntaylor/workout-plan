@@ -1,89 +1,35 @@
-import { Workout } from "./Workout";
-import { Exercise } from "./Workout";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+
+import WorkoutRow from "./WorkoutRow";
 import "./Workouts.css";
 
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPencil,
-  faTrashCan,
-  faCirclePlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+function Workouts() {
+  const [workouts, setWorkouts] = useState([]);
 
-export default function Workouts() {
-  const workoutsLabel = "Workouts";
-
-  const workouts = [
-    new Workout(
-      "Workout 1: Push",
-      "Weights targetting chest and triceps",
-      [
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-      ],
-      90
-    ),
-    new Workout(
-      "Workout 2: Pull",
-      "Weights targetting back and biceps",
-      [
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-      ],
-      90
-    ),
-    new Workout(
-      "Workout 3: Legs",
-      "Weights targetting legs",
-      [
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-      ],
-      90
-    ),
-    new Workout(
-      "Workout 4: HIIT",
-      "High intensity bodyweight workout",
-      [
-        new Exercise("Bench Press", 12),
-        new Exercise("Bench Press", 12),
-        new Exercise("Bench Press", 12),
-      ],
-      90
-    ),
-    new Workout(
-      "Workout 5: Core Strength",
-      "Bodyweight and core workout",
-      [
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-        new Exercise("Bench Press", 12, 3),
-      ],
-      90
-    ),
-  ];
-
-  // Temporarily populate workouts by instantiating class instances
-  // TODO: Update to get workouts from database using fetch/axios
   useEffect(() => {
-    // Add in call to server to fetch workouts
-    console.log(`There are ${workouts.length} workouts!`);
-  });
+    const getWorkouts = async () => {
+      const response = await fetch("http://localhost:5000/workouts");
 
-  const onDeleteWorkout = (workout) => {
-    let index = workouts.indexOf(workout);
-    workouts.splice(index, 1);
-    console.log(`Workout ${index} deleted!`);
-  };
+      if (!response.ok) {
+        window.alert(`An error occured: ${response.statusText}`);
+        return;
+      }
 
-  // TODO: Make function to use instead of repeating classes on table cells
+      const workouts = await response.json();
+      console.log(`There are ${workouts.length} workouts!`);
+      setWorkouts(workouts);
+    };
+
+    getWorkouts();
+    return;
+  }, [workouts.length]);
+
   return (
     <div className="workouts-container">
-      <h2 className="workouts-heading">{workoutsLabel}</h2>
+      <h2 className="workouts-heading">Workouts</h2>
       <table>
         <tbody>
           <tr>
@@ -93,87 +39,20 @@ export default function Workouts() {
             <th className="table-heading-cell">Duration</th>
           </tr>
           {workouts.map((wrkt, i) => (
-            <WorkoutRow
-              key={i}
-              workout={wrkt}
-              deleteWorkout={onDeleteWorkout}
-            ></WorkoutRow>
+            <WorkoutRow key={i} workout={wrkt}></WorkoutRow>
           ))}
         </tbody>
       </table>
-      <AddWorkout></AddWorkout>
+      <div className="add-button-row">
+        <Link to="/AddWorkout">
+          <button className="add-workout-button">
+            <FontAwesomeIcon icon={faCirclePlus} />
+            <span className="button-text">New Workout</span>
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
 
-function WorkoutRow(props) {
-  const [editWorkout, setEditWorkout] = useState(false);
-  const changeEdit = () => {
-    setEditWorkout(!editWorkout);
-  };
-
-  const deleteWorkout = () => {
-    props.deleteWorkout(props.workout);
-  };
-
-  if (editWorkout) {
-    return (
-      <EditWorkout title={"Edit Workout"} changeEdit={changeEdit}></EditWorkout>
-    );
-  } else {
-    return (
-      <tr className="table-row">
-        <td className="table-cell">{props.workout.name}</td>
-        <td className="table-cell">{props.workout.description}</td>
-        <td className="table-cell">{props.workout.exercises.length}</td>
-        <td className="table-cell">{props.workout.duration}</td>
-        <td className="button-cell">
-          <button className="workouts-button" onClick={changeEdit}>
-            <FontAwesomeIcon icon={faPencil} />
-          </button>
-        </td>
-        <td className="button-cell">
-          <button className="workouts-button" onClick={deleteWorkout}>
-            <FontAwesomeIcon icon={faTrashCan} />
-          </button>
-        </td>
-      </tr>
-    );
-  }
-}
-
-function AddWorkout() {
-  const [addWorkout, setAddWorkout] = useState(false);
-  const changeEdit = () => {
-    setAddWorkout(!addWorkout);
-  };
-
-  if (addWorkout) {
-    return (
-      <EditWorkout title={"Add Workout"} changeEdit={changeEdit}></EditWorkout>
-    );
-  } else {
-    return (
-      <div className="add-button-row">
-        <button className="add-workout-button" onClick={changeEdit}>
-          <FontAwesomeIcon icon={faCirclePlus} />
-          <span className="button-text">New Workout</span>
-        </button>
-      </div>
-    );
-  }
-}
-
-function EditWorkout(props) {
-  return (
-    <tr>
-      <div>
-        <p>{props.title}</p>
-        <button onClick={props.changeEdit}>Save</button>
-        <button onClick={props.changeEdit}>Cancel</button>
-      </div>
-    </tr>
-  );
-}
-
-// TODO: Add type checking to workouts
+export default Workouts;

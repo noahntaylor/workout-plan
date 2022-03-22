@@ -38,7 +38,6 @@
 }
 .nav-link:hover {
   cursor: pointer;
-  color: var(--accent-color);
   background-color: var(--light-grey);
   border-radius: 5px;
 }
@@ -47,10 +46,10 @@
   margin: 0 4px;
   padding: 5px 10px;
   color: var(--light-color);
-  background-color: var(--light-grey);
+  background-color: var(--light-purple);
   border-radius: 5px;
 }
 .nav-link-signup:hover {
   cursor: pointer;
-  color: var(--accent-color);
+  background-color: var(--light-purple-hover);
 }

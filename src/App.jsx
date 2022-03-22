@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import AddWorkout from "./components/Workouts/AddWorkout";
+import UpdateWorkout from "./components/Workouts/UpdateWorkout";
 import Workouts from "./components/Workouts/Workouts";
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <div className="app-main">
         <Routes>
           <Route path="/" element={<Workouts />} />
-          <Route path="/NewWorkout" element={<AddWorkout />} />
+          <Route path="/AddWorkout" element={<AddWorkout />} />
+          <Route path="/EditWorkout" element={<UpdateWorkout />} />
         </Routes>
       </div>
     </div>
