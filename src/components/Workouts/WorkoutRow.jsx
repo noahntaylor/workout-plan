@@ -4,18 +4,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 import "./Workouts.css";
+import { Workout } from "./Workout";
 
 function WorkoutRow(props) {
-  useEffect(() => {});
+  const [workout, setWorkout] = useState(new Workout("", "", [], ""));
+
+  useEffect(() => {
+    setWorkout(props.workout);
+    return;
+  }, [props.workout]);
 
   return (
     <tr className="table-row">
-      <td className="table-cell">{props.workout.name}</td>
-      <td className="table-cell">{props.workout.description}</td>
-      <td className="table-cell">{props.workout.exercises.length}</td>
-      <td className="table-cell">{props.workout.duration}</td>
+      <td className="table-cell">{workout.name}</td>
+      <td className="table-cell">{workout.description}</td>
+      <td className="table-cell">{workout.exercises.length}</td>
+      <td className="table-cell">{workout.duration}</td>
       <td className="button-cell">
-        <Link to="/EditWorkout">
+        <Link to={`/EditWorkout/${workout._id}`}>
           <button className="workouts-button">
             <FontAwesomeIcon icon={faPencil} />
           </button>
