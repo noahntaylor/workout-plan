@@ -44,7 +44,16 @@
   padding: 0 6px;
 }
 
+.delete-button-text {
+  padding-left: 6px;
+}
+
 .add-button-row {
+  text-align: center;
+}
+
+.delete-button-row {
+  margin-top: 12px;
   text-align: center;
 }
 

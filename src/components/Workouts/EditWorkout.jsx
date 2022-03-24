@@ -6,16 +6,14 @@ import { Exercise, Workout } from "./Workout";
 import "./Workouts.css";
 
 function EditWorkout(props) {
-  useEffect(() => {});
+  const [workout, setWorkout] = useState(new Workout("", "", [], ""));
+  const [exercises, setExercises] = useState([]);
 
-  const [workout, setWorkout] = useState(
-    new Workout(
-      props.workout.name,
-      props.workout.description,
-      props.workout.exercises,
-      props.workout.duration
-    )
-  );
+  useEffect(() => {
+    setWorkout(props.workout);
+    setExercises(props.workout.exercises);
+    return;
+  }, [props.workout]);
 
   const updateWorkout = (value) => {
     return setWorkout((prev) => {
@@ -27,7 +25,11 @@ function EditWorkout(props) {
     props.addOrUpdateWorkout(workout);
   };
 
-  const [exercises, setExercises] = useState(props.workout.exercises);
+  const deleteWorkout = () => {
+    if (props.onDeleteWorkout) {
+      props.onDeleteWorkout();
+    }
+  };
 
   const addExercise = () => {
     setExercises((prev) => [...prev, new Exercise("", "", "")]);
@@ -123,16 +125,25 @@ function EditWorkout(props) {
           </tbody>
         </table>
       </div>
+      {props.canDelete && (
+        <div className="delete-button-row">
+          <button className="add-workout-button" onClick={deleteWorkout}>
+            <FontAwesomeIcon icon={faTrashCan} />
+            <span className="delete-button-text">Delete Workout</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 function ExerciseRow(props) {
-  useEffect(() => {});
+  const [exercise, setExercise] = useState(new Exercise("", "", ""));
 
-  const [exercise, setExercise] = useState(
-    new Exercise(props.exercise.name, props.exercise.reps, props.exercise.sets)
-  );
+  useEffect(() => {
+    setExercise(props.exercise);
+    return;
+  }, [props.exercise]);
 
   const updateExercise = (value) => {
     return setExercise((prev) => {

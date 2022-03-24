@@ -36,8 +36,10 @@ workoutRoutes.route("/workouts/:id").get(function (req, res) {
 workoutRoutes.route("/workouts/add").post(function (req, res) {
   var data = db.getData("workouts");
   var newWorkout = {
-    name: req.body.workout.name,
-    exercises: req.body.workout.exercises,
+    name: req.body.name,
+    description: req.body.description,
+    exercises: req.body.exercises,
+    duration: req.body.duration,
   };
   data.collection("workouts").insertOne(newWorkout, function (error, result) {
     if (error) {
@@ -48,14 +50,16 @@ workoutRoutes.route("/workouts/add").post(function (req, res) {
   });
 });
 
-// POST update workout by ID
+// PUT update workout by ID
 workoutRoutes.route("/workouts/update/:id").post(function (req, res) {
   var data = db.getData("workouts");
   var query = { _id: ObjectId(req.params.id) };
   var updatedWorkout = {
     $set: {
-      workout_name: req.body.workout.name,
-      workout_exercises: req.body.workout.exercises,
+      name: req.body.name,
+      description: req.body.description,
+      exercises: req.body.exercises,
+      duration: req.body.duration,
     },
   };
   data

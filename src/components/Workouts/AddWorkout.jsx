@@ -5,14 +5,12 @@ import EditWorkout from "./EditWorkout";
 import { Exercise, Workout } from "./Workout";
 import "./Workouts.css";
 
-function AddWorkout(props) {
-  useEffect(() => {});
-
-  const navigate = useNavigate();
-
+function AddWorkout() {
   const [newWorkout] = useState(
     new Workout("", "", [new Exercise("", "", "")], "")
   );
+
+  const navigate = useNavigate();
 
   const addWorkout = async (workout) => {
     await fetch("http://localhost:5000/workouts/add", {
@@ -30,7 +28,7 @@ function AddWorkout(props) {
     navigate("/");
   };
 
-  const onCancel = () => {
+  const cancel = () => {
     navigate("/");
   };
 
@@ -38,8 +36,9 @@ function AddWorkout(props) {
     <EditWorkout
       title={"Add Workout"}
       workout={newWorkout}
+      canDelete={false}
       addOrUpdateWorkout={addWorkout}
-      onCancel={onCancel}
+      onCancel={cancel}
     ></EditWorkout>
   );
 }
