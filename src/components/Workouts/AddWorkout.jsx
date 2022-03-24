@@ -1,7 +1,7 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import EditWorkout from "./EditWorkout";
+import WorkoutEditor from "./WorkoutEditor";
 import { Exercise, Workout } from "./Workout";
 import "./Workouts.css";
 
@@ -33,13 +33,13 @@ function AddWorkout() {
   };
 
   return (
-    <EditWorkout
+    <WorkoutEditor
       title={"Add Workout"}
       workout={newWorkout}
       canDelete={false}
       addOrUpdateWorkout={addWorkout}
       onCancel={cancel}
-    ></EditWorkout>
+    ></WorkoutEditor>
   );
 }
 

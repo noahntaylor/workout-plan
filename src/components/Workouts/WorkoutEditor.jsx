@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 import { Exercise, Workout } from "./Workout";
+import ExerciseEditor from "./ExerciseEditor";
 import "./Workouts.css";
 
-function EditWorkout(props) {
+function WorkoutEditor(props) {
   const [workout, setWorkout] = useState(new Workout("", "", [], ""));
   const [exercises, setExercises] = useState([]);
 
@@ -115,12 +116,12 @@ function EditWorkout(props) {
           </thead>
           <tbody>
             {exercises.map((exercise, i) => (
-              <ExerciseRow
+              <ExerciseEditor
                 key={i}
                 exercise={exercise}
                 onAddExercise={addExercise}
                 onDeleteExercise={deleteExercise}
-              ></ExerciseRow>
+              ></ExerciseEditor>
             ))}
           </tbody>
         </table>
@@ -137,69 +138,4 @@ function EditWorkout(props) {
   );
 }
 
-function ExerciseRow(props) {
-  const [exercise, setExercise] = useState(new Exercise("", "", ""));
-
-  useEffect(() => {
-    setExercise(props.exercise);
-    return;
-  }, [props.exercise]);
-
-  const updateExercise = (value) => {
-    return setExercise((prev) => {
-      return { ...prev, ...value };
-    });
-  };
-
-  const deleteExercise = () => {
-    props.onDeleteExercise(exercise);
-  };
-
-  return (
-    <tr>
-      <td className="exercise-table-cell">
-        <input
-          type="text"
-          placeholder="Exercise name"
-          value={exercise.name}
-          onChange={(e) =>
-            updateExercise({
-              name: e.target.value,
-            })
-          }
-        />
-      </td>
-      <td className="exercise-table-cell">
-        <input
-          type="text"
-          placeholder="Sets"
-          value={exercise.sets}
-          onChange={(e) =>
-            updateExercise({
-              sets: e.target.value,
-            })
-          }
-        />
-      </td>
-      <td className="exercise-table-cell">
-        <input
-          type="text"
-          placeholder="Reps"
-          value={exercise.reps}
-          onChange={(e) =>
-            updateExercise({
-              reps: e.target.value,
-            })
-          }
-        />
-      </td>
-      <td className="exercise-table-cell">
-        <button className="workouts-button" onClick={deleteExercise}>
-          <FontAwesomeIcon icon={faTrashCan} />
-        </button>
-      </td>
-    </tr>
-  );
-}
-
-export default EditWorkout;
+export default WorkoutEditor;
