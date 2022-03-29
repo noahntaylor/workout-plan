@@ -83,7 +83,31 @@
   background-color: var(--light-purple-hover);
 }
 
+.workout-button-link {
+  background-color: var(--light-purple);
+  border: none;
+  margin: 0 4px;
+  padding: 5px 6px;
+  color: var(--light-color);
+  border-radius: 5px;
+  font-size: 15px;
+}
+.workout-button-link:hover {
+  cursor: pointer;
+  background-color: var(--light-purple-hover);
+}
+
 .edit-workout-container {
+  background-color: var(--surface-color);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px 25px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.view-workout-container {
+  min-width: 600px;
   background-color: var(--surface-color);
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -95,6 +119,15 @@
 .edit-workout-row {
   display: flex;
   flex-direction: row;
+}
+
+.view-workout-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  font-size: 16px;
 }
 
 .edit-workout-title-row {
@@ -135,6 +168,13 @@
   padding-bottom: 2px;
 }
 
+.view-exercises-label {
+  padding: 6px 0;
+  padding-left: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .exercise-table {
   padding: 0 12px;
   width: 100%;
@@ -144,6 +184,14 @@
   padding: 2px 10px;
   font-size: 14px;
   text-align: left;
+}
+
+.view-exercise-table-heading-cell {
+  padding: 2px 10px;
+  font-size: 14px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .exercise-button-text {
@@ -156,6 +204,11 @@
   align-self: center;
   font-size: 18px;
   font-weight: 500;
+}
+
+.view-workout-link {
+  color: #fff;
+  text-decoration: none;
 }
 
 input {

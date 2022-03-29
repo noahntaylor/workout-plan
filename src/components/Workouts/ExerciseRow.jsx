@@ -24,11 +24,6 @@ function ExerciseRow(props) {
       <td className="exercise-table-cell">
         <span>{exercise.reps}</span>
       </td>
-      <td className="exercise-table-cell">
-        <button className="workouts-button">
-          <FontAwesomeIcon icon={faTrashCan} />
-        </button>
-      </td>
     </tr>
   );
 }
