@@ -15,15 +15,9 @@ function ExerciseRow(props) {
 
   return (
     <tr>
-      <td className="exercise-table-cell">
-        <span>{exercise.name}</span>
-      </td>
-      <td className="exercise-table-cell">
-        <span>{exercise.sets}</span>
-      </td>
-      <td className="exercise-table-cell">
-        <span>{exercise.reps}</span>
-      </td>
+      <td className="table-cell">{exercise.name}</td>
+      <td className="table-cell">{exercise.sets}</td>
+      <td className="table-cell">{exercise.reps}</td>
     </tr>
   );
 }
