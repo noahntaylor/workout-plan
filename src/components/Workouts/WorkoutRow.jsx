@@ -16,7 +16,11 @@ function WorkoutRow(props) {
 
   return (
     <tr className="table-row">
-      <td className="table-cell">{workout.name}</td>
+      <td className="table-cell">
+        <Link to={`/Workout/${workout._id}`} className="view-workout-link">
+          <button className="workout-button-link">{workout.name}</button>
+        </Link>
+      </td>
       <td className="table-cell">{workout.description}</td>
       <td className="table-cell">{workout.exercises.length}</td>
       <td className="table-cell">{workout.duration}</td>

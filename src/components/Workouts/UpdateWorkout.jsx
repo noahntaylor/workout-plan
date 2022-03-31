@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import EditWorkout from "./EditWorkout";
+import WorkoutEditor from "./WorkoutEditor";
 import { Workout } from "./Workout";
 import "./Workouts.css";
 
-function UpdateWorkout(props) {
+function UpdateWorkout() {
   const [editWorkout, setEditWorkout] = useState(new Workout("", "", [], ""));
   const params = useParams();
   const navigate = useNavigate();
@@ -67,14 +67,14 @@ function UpdateWorkout(props) {
   };
 
   return (
-    <EditWorkout
+    <WorkoutEditor
       title={"Edit Workout"}
       workout={editWorkout}
       canDelete={true}
       addOrUpdateWorkout={updateWorkout}
       onDeleteWorkout={deleteWorkout}
       onCancel={onCancel}
-    ></EditWorkout>
+    ></WorkoutEditor>
   );
 }
 

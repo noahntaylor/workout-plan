@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./components/Nav/Nav";
 import AddWorkout from "./components/Workouts/AddWorkout";
 import UpdateWorkout from "./components/Workouts/UpdateWorkout";
+import ViewWorkout from "./components/Workouts/ViewWorkout";
 import Workouts from "./components/Workouts/Workouts";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Workouts />} />
           <Route path="/AddWorkout" element={<AddWorkout />} />
           <Route path="/EditWorkout/:id" element={<UpdateWorkout />} />
+          <Route path="/Workout/:id" element={<ViewWorkout />} />
         </Routes>
       </div>
     </div>

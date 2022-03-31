@@ -1,4 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+
 import "./Nav.css";
 
 function Nav() {
@@ -9,7 +13,12 @@ function Nav() {
 
   return (
     <div className="nav-container">
-      <h1 className="nav-heading">{appTitle}</h1>
+      <Link to={"/"} className="nav-home-link">
+        <h1 className="nav-heading">
+          <FontAwesomeIcon icon={faDumbbell} className="logo" />
+          {appTitle}
+        </h1>
+      </Link>
       <div className="nav-links-container">
         <ul className="nav-links">
           <li className="nav-link">{calendarLabel}</li>
