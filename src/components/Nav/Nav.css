@@ -35,6 +35,8 @@
 .nav-link {
   margin: 0 4px;
   padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
 }
 .nav-link:hover {
   cursor: pointer;

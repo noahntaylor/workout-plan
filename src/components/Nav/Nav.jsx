@@ -6,7 +6,7 @@ import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import "./Nav.css";
 
 function Nav() {
-  const appTitle = "Wrkt-Plan";
+  const appTitle = "Workout-Plan";
   const calendarLabel = "Calendar";
   const workoutsLabel = "Workouts";
   const signUpLabel = "Sign Up";
@@ -21,9 +21,9 @@ function Nav() {
       </Link>
       <div className="nav-links-container">
         <ul className="nav-links">
-          <li className="nav-link">{calendarLabel}</li>
-          <li className="nav-link">{workoutsLabel}</li>
-          <li className="nav-link-signup">{signUpLabel}</li>
+          <Link to={"/"} className="nav-link">
+            {workoutsLabel}
+          </Link>
         </ul>
       </div>
     </div>
