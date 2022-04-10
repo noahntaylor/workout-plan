@@ -12,7 +12,7 @@ function WorkoutEditor(props) {
 
   useEffect(() => {
     setWorkout(props.workout);
-    setExercises(props.workout.exercises);
+    setExercises(props.workout.exercises ?? []);
     return;
   }, [props.workout]);
 
@@ -34,15 +34,8 @@ function WorkoutEditor(props) {
 
   const addExercise = () => {
     setExercises((prev) => [...prev, new Exercise("", "", "")]);
+    updateWorkout({ exercises: exercises });
     console.log("Exercise Added!");
-  };
-
-  const deleteExercise = (exercise) => {
-    let index = exercises.indexOf(exercise);
-    setExercises(
-      exercises.filter((exerc) => exercises.indexOf(exerc) != index)
-    );
-    console.log("Exercise Deleted!");
   };
 
   const cancel = () => {
@@ -118,9 +111,11 @@ function WorkoutEditor(props) {
             {exercises.map((exercise, i) => (
               <ExerciseEditor
                 key={i}
+                index={i}
                 exercise={exercise}
-                onAddExercise={addExercise}
-                onDeleteExercise={deleteExercise}
+                exercises={exercises}
+                setExercises={setExercises}
+                updateWorkout={updateWorkout}
               ></ExerciseEditor>
             ))}
           </tbody>
