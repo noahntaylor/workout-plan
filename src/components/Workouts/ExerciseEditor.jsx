@@ -14,13 +14,21 @@ function ExerciseEditor(props) {
   }, [props.exercise]);
 
   const updateExercise = (value) => {
-    return setExercise((prev) => {
+    setExercise((prev) => {
       return { ...prev, ...value };
     });
+
+    var exercises = props.exercises;
+    exercises.splice(props.index, 1, exercise);
+    props.setExercises(exercises);
+    props.updateWorkout({ exercises: exercises });
   };
 
   const deleteExercise = () => {
-    props.onDeleteExercise(exercise);
+    var exercises = props.exercises;
+    exercises.splice(props.index, 1);
+    props.setExercises(exercises);
+    props.updateWorkout({ exercises: exercises });
   };
 
   return (
