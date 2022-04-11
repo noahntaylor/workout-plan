@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 import "./Workouts.css";
-import { Workout } from "./Workout";
+import { Workout } from "./WorkoutClasses";
 
 function WorkoutRow(props) {
   const [workout, setWorkout] = useState(new Workout("", "", [], ""));

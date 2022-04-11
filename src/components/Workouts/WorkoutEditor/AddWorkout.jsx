@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import WorkoutEditor from "./WorkoutEditor";
-import { Exercise, Workout } from "./Workout";
-import "./Workouts.css";
+import { Exercise, Workout } from "../WorkoutClasses";
+import "../Workouts.css";
 
 function AddWorkout() {
   const [newWorkout] = useState(

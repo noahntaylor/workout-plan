@@ -2,9 +2,9 @@ import { React, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
-import { Exercise, Workout } from "./Workout";
+import { Exercise, Workout } from "../WorkoutClasses";
 import ExerciseEditor from "./ExerciseEditor";
-import "./Workouts.css";
+import "../Workouts.css";
 
 function WorkoutEditor(props) {
   const [workout, setWorkout] = useState(new Workout("", "", [], ""));

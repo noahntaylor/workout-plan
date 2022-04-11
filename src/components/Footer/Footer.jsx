@@ -1,8 +1,15 @@
-import React from "react";
 import "./Footer.css";
 
 function Footer() {
-  return <div>Footer</div>;
+  const copyText = "\u00A9 NT 2022";
+
+  return (
+    <div id="footer" className="footer">
+      <div>
+        <p className="footer-copyright">{copyText}</p>
+      </div>
+    </div>
+  );
 }
 
 export default Footer;

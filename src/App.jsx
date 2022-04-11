@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Nav/Nav";
-import AddWorkout from "./components/Workouts/AddWorkout";
-import UpdateWorkout from "./components/Workouts/UpdateWorkout";
-import ViewWorkout from "./components/Workouts/ViewWorkout";
+import Footer from "./components/Footer/Footer";
+import AddWorkout from "./components/Workouts/WorkoutEditor/AddWorkout";
+import UpdateWorkout from "./components/Workouts/WorkoutEditor/UpdateWorkout";
+import ViewWorkout from "./components/Workouts/WorkoutViewer/ViewWorkout";
 import Workouts from "./components/Workouts/Workouts";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Workout/:id" element={<ViewWorkout />} />
         </Routes>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
