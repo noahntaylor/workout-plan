@@ -1,0 +1,16 @@
+.footer {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  font-weight: 300;
+  color: #ccc;
+  margin: 0;
+  padding: 4px 0;
+}

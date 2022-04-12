@@ -2,8 +2,8 @@ import { React, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-import { Exercise } from "./Workout";
-import "./Workouts.css";
+import { Exercise } from "../WorkoutClasses";
+import "../Workouts.css";
 
 function ExerciseEditor(props) {
   const [exercise, setExercise] = useState(new Exercise("", "", ""));

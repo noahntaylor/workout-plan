@@ -3,9 +3,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
-import { Workout } from "./Workout";
+import { Workout } from "../WorkoutClasses";
 import ExerciseRow from "./ExerciseRow";
-import "./Workouts.css";
+import "../Workouts.css";
 
 function ViewWorkout() {
   const [workout, setWorkout] = useState(new Workout("", "", [], ""));
