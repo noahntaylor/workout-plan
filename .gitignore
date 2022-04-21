@@ -1,9 +1,13 @@
 # dependencies
 /server/node_modules
 /client/node_modules
+/.gitignore
+.gitignore
 
 # env
 /server/.env
+/.env
+.env
 
 # dependencies
 /node_modules
@@ -14,7 +18,7 @@
 /coverage
 
 # production
-client/build
+/client/build
 
 # misc
 .DS_Store

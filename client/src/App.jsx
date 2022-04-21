@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import AddWorkout from "./components/Workouts/WorkoutEditor/AddWorkout";
 import UpdateWorkout from "./components/Workouts/WorkoutEditor/UpdateWorkout";
 import ViewWorkout from "./components/Workouts/WorkoutViewer/ViewWorkout";
 import Workouts from "./components/Workouts/Workouts";
+import "./App.css";
 
 function App() {
   return (
