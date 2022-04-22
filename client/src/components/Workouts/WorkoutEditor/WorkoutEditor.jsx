@@ -35,7 +35,6 @@ function WorkoutEditor(props) {
   const addExercise = () => {
     setExercises((prev) => [...prev, new Exercise("", "", "")]);
     updateWorkout({ exercises: exercises });
-    console.log("Exercise Added!");
   };
 
   const cancel = () => {

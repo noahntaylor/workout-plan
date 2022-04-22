@@ -13,7 +13,7 @@ function UpdateWorkout() {
   useEffect(() => {
     const getEditWorkout = async () => {
       const id = params.id.toString();
-      const response = await fetch(`http://localhost:5000/workouts/${id}`);
+      const response = await fetch(`/workouts/${id}`);
 
       if (!response.ok) {
         window.alert(`An error has occurred: ${response.statusText}`);
@@ -34,7 +34,7 @@ function UpdateWorkout() {
 
   const updateWorkout = async (workout) => {
     const id = params.id.toString();
-    await fetch(`http://localhost:5000/workouts/update/${id}`, {
+    await fetch(`/workouts/update/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,20 +45,18 @@ function UpdateWorkout() {
       return;
     });
 
-    console.log("Workout updated!");
     navigate("/");
   };
 
   const deleteWorkout = async () => {
     const id = params.id.toString();
-    await fetch(`http://localhost:5000/workouts/delete/${id}`, {
+    await fetch(`/workouts/delete/${id}`, {
       method: "DELETE",
     }).catch((error) => {
       window.alert(error);
       return;
     });
 
-    console.log("Workout Deleted!");
     navigate("/");
   };
 
