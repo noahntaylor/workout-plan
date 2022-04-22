@@ -11,7 +11,7 @@ function Workouts() {
 
   useEffect(() => {
     const getWorkouts = async () => {
-      const response = await fetch("http://localhost:5000/workouts");
+      const response = await fetch("/workouts");
 
       if (!response.ok) {
         window.alert(`An error occured: ${response.statusText}`);
@@ -19,7 +19,6 @@ function Workouts() {
       }
 
       const workouts = await response.json();
-      console.log(`There are ${workouts.length} workouts!`);
       setWorkouts(workouts);
     };
 

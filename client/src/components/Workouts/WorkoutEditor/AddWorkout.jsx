@@ -13,7 +13,7 @@ function AddWorkout() {
   const navigate = useNavigate();
 
   const addWorkout = async (workout) => {
-    await fetch("http://localhost:5000/workouts/add", {
+    await fetch("/workouts/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,6 @@ function AddWorkout() {
       return;
     });
 
-    console.log("Workout Added!");
     navigate("/");
   };
 
