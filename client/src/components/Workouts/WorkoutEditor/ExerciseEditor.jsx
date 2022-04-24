@@ -11,7 +11,7 @@ function ExerciseEditor(props) {
   useEffect(() => {
     setExercise(props.exercise);
     return;
-  }, [props.exercise]);
+  }, [props.exercise.name, props.exercise.sets, props.exercise.reps]);
 
   const updateExercise = (value) => {
     setExercise((prev) => {
@@ -37,6 +37,7 @@ function ExerciseEditor(props) {
         <input
           type="text"
           placeholder="Exercise name"
+          className="exercise-input"
           value={exercise.name}
           onChange={(e) =>
             updateExercise({
@@ -49,6 +50,7 @@ function ExerciseEditor(props) {
         <input
           type="text"
           placeholder="Sets"
+          className="exercise-input"
           value={exercise.sets}
           onChange={(e) =>
             updateExercise({
@@ -61,6 +63,7 @@ function ExerciseEditor(props) {
         <input
           type="text"
           placeholder="Reps"
+          className="exercise-input"
           value={exercise.reps}
           onChange={(e) =>
             updateExercise({

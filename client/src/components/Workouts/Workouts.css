@@ -107,7 +107,8 @@
 }
 
 .view-workout-container {
-  min-width: 600px;
+  width: 80vw;
+  max-width: 600px;
   background-color: var(--surface-color);
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -214,4 +215,18 @@
 input {
   border-radius: 5px;
   min-height: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .descript-cell {
+    display: none;
+  }  
+  .view-workout-row {
+    flex-direction: column;    
+  }
+}
+@media screen and (max-width: 800px) {  
+  .exercise-input {
+    max-width: 12vw;
+  }
 }

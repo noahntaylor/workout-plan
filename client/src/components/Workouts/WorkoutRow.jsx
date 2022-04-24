@@ -21,7 +21,7 @@ function WorkoutRow(props) {
           <button className="workout-button-link">{workout.name}</button>
         </Link>
       </td>
-      <td className="table-cell">{workout.description}</td>
+      <td className="table-cell descript-cell">{workout.description}</td>
       <td className="table-cell">{workout.exercises.length}</td>
       <td className="table-cell">{workout.duration}</td>
       <td className="button-cell">

@@ -32,8 +32,8 @@ function Workouts() {
       <table>
         <tbody>
           <tr>
-            <th className="table-heading-cell">Workout Name</th>
-            <th className="table-heading-cell">Description</th>
+            <th className="table-heading-cell">Name</th>
+            <th className="table-heading-cell descript-cell">Description</th>
             <th className="table-heading-cell">Exercises</th>
             <th className="table-heading-cell">Duration</th>
           </tr>
