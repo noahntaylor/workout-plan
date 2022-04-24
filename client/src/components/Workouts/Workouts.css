@@ -84,13 +84,13 @@
 }
 
 .workout-button-link {
-  background-color: var(--light-purple);
+  background: none;
   border: none;
-  margin: 0 4px;
-  padding: 5px 6px;
-  color: var(--light-color);
   border-radius: 5px;
+  color: var(--light-color);
   font-size: 15px;
+  margin: 0 4px;
+  padding: 5px 6px;  
 }
 .workout-button-link:hover {
   cursor: pointer;
@@ -212,6 +212,10 @@
   text-decoration: none;
 }
 
+.icon {
+  margin-right: 6px;
+}
+
 input {
   border-radius: 5px;
   min-height: 18px;
@@ -223,6 +227,9 @@ input {
   }  
   .view-workout-row {
     flex-direction: column;    
+  }
+  .workout-button-link {
+    margin: 0;
   }
 }
 @media screen and (max-width: 800px) {  

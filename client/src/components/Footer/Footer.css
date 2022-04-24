@@ -5,6 +5,7 @@
   text-align: center;
   color: #fff;
   font-size: 1.8rem;
+  justify-self: flex-end;
 }
 
 .footer-copyright {

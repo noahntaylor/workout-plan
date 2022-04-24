@@ -13,15 +13,18 @@
 
 .app {
   width: 100%;
-  height: 100vh;
+  margin-top: 10vh;
   color: #fff;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin: 8vh 12vw;
   min-height: 65vh;
 }
