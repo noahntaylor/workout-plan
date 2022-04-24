@@ -1,7 +1,10 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPencil,
+  faUpRightFromSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 import "./Workouts.css";
 import { Workout } from "./WorkoutClasses";
@@ -18,10 +21,13 @@ function WorkoutRow(props) {
     <tr className="table-row">
       <td className="table-cell">
         <Link to={`/Workout/${workout._id}`} className="view-workout-link">
-          <button className="workout-button-link">{workout.name}</button>
+          <button className="workout-button-link">
+            <FontAwesomeIcon className="icon" icon={faUpRightFromSquare} />
+            {workout.name}
+          </button>
         </Link>
       </td>
-      <td className="table-cell">{workout.description}</td>
+      <td className="table-cell descript-cell">{workout.description}</td>
       <td className="table-cell">{workout.exercises.length}</td>
       <td className="table-cell">{workout.duration}</td>
       <td className="button-cell">

@@ -16,7 +16,7 @@ function ViewWorkout() {
   useEffect(() => {
     const getWorkout = async () => {
       const id = params.id.toString();
-      const response = await fetch(`http://localhost:5000/workouts/${id}`);
+      const response = await fetch(`/workouts/${id}`);
 
       if (!response.ok) {
         window.alert(`An error has occurred: ${response.statusText}`);

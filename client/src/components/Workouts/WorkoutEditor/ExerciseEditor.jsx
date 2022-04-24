@@ -13,16 +13,46 @@ function ExerciseEditor(props) {
     return;
   }, [props.exercise]);
 
-  const updateExercise = (value) => {
-    setExercise((prev) => {
-      return { ...prev, ...value };
-    });
+  const updateName = (value) => {
+    updateExercise(value);
 
-    var exercises = props.exercises;
-    exercises.splice(props.index, 1, exercise);
-    props.setExercises(exercises);
+    let exercises = [...props.exercises];
+    let exer = { ...exercises[props.index] };
+    exer.name = value.name;
+    exercises[props.index] = exer;
+    console.log(exercises);
     props.updateWorkout({ exercises: exercises });
   };
+
+  const updateSets = (value) => {
+    updateExercise(value);
+
+    let exercises = [...props.exercises];
+    let exer = { ...exercises[props.index] };
+    exer.sets = value.sets;
+    exercises[props.index] = exer;
+    console.log(exercises);
+    props.updateWorkout({ exercises: exercises });
+  };
+
+  const updateReps = (value) => {
+    updateExercise(value);
+
+    let exercises = [...props.exercises];
+    let exer = { ...exercises[props.index] };
+    exer.reps = value.reps;
+    exercises[props.index] = exer;
+    console.log(exercises);
+    props.updateWorkout({ exercises: exercises });
+  };
+
+  const updateExercise = (value) => {
+    return setExercise((prev) => {
+      return { ...prev, ...value };
+    });
+  };
+
+  const saveExercise = () => {};
 
   const deleteExercise = () => {
     var exercises = props.exercises;
@@ -37,21 +67,21 @@ function ExerciseEditor(props) {
         <input
           type="text"
           placeholder="Exercise name"
+          className="exercise-input"
           value={exercise.name}
-          onChange={(e) =>
-            updateExercise({
-              name: e.target.value,
-            })
-          }
+          onChange={(e) => {
+            updateName({ name: e.target.value });
+          }}
         />
       </td>
       <td className="exercise-table-cell">
         <input
           type="text"
           placeholder="Sets"
+          className="exercise-input"
           value={exercise.sets}
           onChange={(e) =>
-            updateExercise({
+            updateSets({
               sets: e.target.value,
             })
           }
@@ -61,9 +91,10 @@ function ExerciseEditor(props) {
         <input
           type="text"
           placeholder="Reps"
+          className="exercise-input"
           value={exercise.reps}
           onChange={(e) =>
-            updateExercise({
+            updateReps({
               reps: e.target.value,
             })
           }

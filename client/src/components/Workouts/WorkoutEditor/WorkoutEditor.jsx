@@ -32,6 +32,10 @@ function WorkoutEditor(props) {
     }
   };
 
+  const updateExercises = (exercs) => {
+    setExercises(exercs);
+  };
+
   const addExercise = () => {
     setExercises((prev) => [...prev, new Exercise("", "", "")]);
     updateWorkout({ exercises: exercises });
@@ -114,6 +118,7 @@ function WorkoutEditor(props) {
                 exercise={exercise}
                 exercises={exercises}
                 setExercises={setExercises}
+                updateExercises={updateExercises}
                 updateWorkout={updateWorkout}
               ></ExerciseEditor>
             ))}
