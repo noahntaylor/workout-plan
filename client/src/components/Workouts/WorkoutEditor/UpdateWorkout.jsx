@@ -45,7 +45,7 @@ function UpdateWorkout() {
       return;
     });
 
-    navigate("/");
+    navigate(`/Workout/${id}`);
   };
 
   const deleteWorkout = async () => {

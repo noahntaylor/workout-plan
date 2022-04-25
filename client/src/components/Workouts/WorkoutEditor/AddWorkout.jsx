@@ -24,7 +24,7 @@ function AddWorkout() {
       return;
     });
 
-    navigate("/");
+    navigate(`/`);
   };
 
   const cancel = () => {
