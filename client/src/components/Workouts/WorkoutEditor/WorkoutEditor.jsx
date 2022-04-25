@@ -16,12 +16,6 @@ function WorkoutEditor(props) {
     return;
   }, [props.workout]);
 
-  const updateWorkout = (value) => {
-    return setWorkout((prev) => {
-      return { ...prev, ...value };
-    });
-  };
-
   const addOrUpdateWorkout = () => {
     props.addOrUpdateWorkout(workout);
   };
@@ -32,13 +26,46 @@ function WorkoutEditor(props) {
     }
   };
 
-  const updateExercises = (exercs) => {
-    setExercises(exercs);
+  const updateWorkout = (value) => {
+    return setWorkout((prev) => {
+      return { ...prev, ...value };
+    });
+  };
+
+  const updateExercises = (type, value, index) => {
+    switch (type) {
+      case "updateName":
+        var exercs = [...exercises];
+        var exer = { ...exercises[index] };
+        exer.name = value.name;
+        exercs[index] = exer;
+        setExercises(exercs);
+        updateWorkout({ exercises: exercs });
+        return;
+
+      case "updateSets":
+        var exercs = [...exercises];
+        var exer = { ...exercises[index] };
+        exer.sets = value.sets;
+        exercs[index] = exer;
+        setExercises(exercs);
+        updateWorkout({ exercises: exercs });
+        return;
+
+      case "updateReps":
+        var exercs = [...exercises];
+        var exer = { ...exercises[index] };
+        exer.reps = value.reps;
+        exercs[index] = exer;
+        setExercises(exercs);
+        updateWorkout({ exercises: exercs });
+        return;
+    }
   };
 
   const addExercise = () => {
+    updateWorkout({ exercises: [...exercises, new Exercise("", "", "")] });
     setExercises((prev) => [...prev, new Exercise("", "", "")]);
-    updateWorkout({ exercises: exercises });
   };
 
   const cancel = () => {
